@@ -1,5 +1,29 @@
 # Setting up a Flo-Hub App on EC2 Instance
 
+
+## Update Build on EC2 Ubuntu Server
+
+### Step 1: SSH into EC2 Ubuntu Server
+  ```bash
+  git sync flo-hub
+  ```
+### Step 2: Install all the required dependencies
+  ```bash
+  cd flo-hub
+  npm install
+  #npm update
+  ```
+### Step 3: Create Production Build
+  ```bash
+  npm run build
+  #clear the old build files
+  sudo rm -rf /var/www/vhosts/frontend/*
+  #copy the new build files to the frontend folder
+  sudo cp -R build/ /var/www/vhosts/frontend/
+  ```
+
+## FOR FRESH BUILDS ON NEW EC2 INSTANCES
+
 ### Step 1: Launch an AWS EC2 Ubuntu Server
 
 - Log in to the AWS Management Console.
@@ -76,6 +100,7 @@ sudo rm -rf default
 
   ```bash
   sudo ln -s /etc/nginx/sites-available/<nginx-file-name> /etc/nginx/sites-enabled/
+  sudo gpasswd -a www-data ubuntu 
   ```
 ### Step 8: Start the Application
 - Restart Nginx and allow the changes to take place.
@@ -93,7 +118,7 @@ First, you have to Public IP address or ec2 instance as An R3cord of your domain
 
   ```bash
   sudo apt-get install certbot python3-certbot-nginx
-  sudo certbot --nginx -d <domain-name>
+  sudo certbot --nginx -d flo-labs.com
   sudo systemctl reload nginx
   ```
 ### Step 10: Conclusion
