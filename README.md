@@ -121,5 +121,7 @@ First, you have to Public IP address or ec2 instance as An R3cord of your domain
   sudo certbot --nginx -d flo-labs.com
   sudo systemctl reload nginx
   ```
+##### Make sure CloudFlare is set to use Full SSL instead of flexible, else https will loop
+
 ### Step 10: Conclusion
 Deploying a ReactJS application on an AWS EC2 instance requires careful configuration and setup. By following these steps, you can successfully launch your application and serve it using Nginx, ensuring a seamless user experience.
