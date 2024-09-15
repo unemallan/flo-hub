@@ -10,8 +10,7 @@
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
-    "eslint:recommended", 
-    "next"
+    "eslint:recommended"
   ],
   "plugins": ["react", "unused-imports", "import", "@typescript-eslint", "jsx-a11y", "prettier"],
   "parser": "@typescript-eslint/parser",
