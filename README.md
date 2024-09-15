@@ -64,6 +64,10 @@ it will ask you for your GitHub username and password. You can use a Personal Ac
 ### Step 6: Create Production Build
   ```bash
   npm run build
+  ## For Next
+  NODE_ENV=production npm run start
+
+  ##For React (OLD)
   sudo mkdir /var/www/vhosts/frontend/
   sudo cp -R build/ /var/www/vhosts/frontend/
   ```
@@ -83,6 +87,24 @@ sudo rm -rf default
 
 - Paste the provided server configuration inside the file created.
 
+ ### NextJS
+   ```bash
+  server {
+    listen 80 default_server;
+    server_name _;
+
+    location / {
+            proxy_pass http://localhost:3000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+      }
+  }
+  ```
+ 
+ ### OLD REACT
   ```bash
   server {
     listen 80 default_server;
